@@ -1,62 +1,64 @@
-// TODO: все сделано ;)
+// london is the capital of great britian
+// TODO: everything is done ;)
 
-// gemini, мои лапки уже хотят спать (хотя, скорее всего, логично - я не делаю MVP Безделушку, а MVP Безделушку Pro)
+// Gemini, my paws want to sleep (makes sense though - I'm not building a basic Toy MVP, but a Toy Pro MVP)
 
-// не в функциях, ведь скрипт мелкий. пока можно ;)
+// Not using functions for logic here since the script is tiny. For now, it's fine ;)
 
-// переменные
-class Person(val name: String, val isOleg: Boolean) // шаблон для удобства
-val database = mutableListOf<Person>() // бд (туда лучше не лезть во время работы программы(т.е всегда))
-var olegCount = 0 // счетчик олегов
+// Variables
+class Person(val name: String, val isOleg: Boolean) // Template for convenience
+val database = mutableListOf<Person>() // DB (better not touch this while the program is running (meaning: never))
+var olegCount = 0 // Oleg counter
 
-// все доступные команды
+// Show all available commands
 fun nameallcommands() {
     println("commands = print all commands, print = print all names,\nclear = clear database, exit = exit")
 }
 
-// показ базы данных + количество олегов
+// Show database content + Oleg count
 fun nameallnames() {
-    // пока всех челов не перечислим (10/10, например)
+    // Iterate through all people (e.g., 10/10)
     for (person in database) {
-        // чекаем статус олега
-        val status = if (person.isOleg) "ДА" else "нет"
-        // докс
-        println("Имя: ${person.name}, он Олег? $status")
+        // Check Oleg status
+        val status = if (person.isOleg) "YES" else "no"
+        // Doxxing
+        println("Name: ${person.name}, is he Oleg? $status")
     }
-    // для удобства
-    print("общее кол-во Олегов: $olegCount")
+    // For convenience
+    print("Total number of Olegs: $olegCount")
 }
 
-// паник мод, наверное
+// Panic mode, I guess
 fun cleardatabase() {
-    database.clear() // удаление
-    println("официальная база стерта, если база данных есть в интернете - она не удалится!")
+    database.clear() // Deleting
+    println("The official database has been wiped. If it's leaked online, it won't be deleted there!")
 }
 
-// основной бро
+// The main bro
 fun main() {
-    // пока true
+    // Keep going while true
     while(true) {
-        // приветственный экранчик
+        // Welcome screen
         println("--- name database (type \"олег\"!) ---")
         println("--- all commands: \"commands\" ---")
         print("A:")
-        // регаем инпут
+
+        // Register input
         val olegram: String = readln()
-        // незаменимая и очень полезная штука when. без "чем гуще лес - if else, if else"
+
+        // The indispensable and very useful 'when'. Avoiding the "if-else forest"
         when (olegram) {
-            // база
+            // Standard commands
             "commands" -> nameallcommands()
             "print" -> nameallnames()
             "clear" -> cleardatabase()
             "exit" -> break
             "олег" -> {
-                olegCount++ // регаем олега
-                val newPerson = Person(name = olegram, isOleg = olegram.lowercase() == "олег") // чтоб это кинуть в бд
-                database.add(newPerson) // сейвим
-
+                olegCount++ // Registering an Oleg
+                val newPerson = Person(name = olegram, isOleg = olegram.lowercase() == "олег") // Preparing for DB
+                database.add(newPerson) // Saving
             }
-            // тоже самое, без олега
+            // Same thing, but not an Oleg
             else -> {
                 val newPerson = Person(name = olegram, isOleg = olegram.lowercase() == "олег")
                 database.add(newPerson)
