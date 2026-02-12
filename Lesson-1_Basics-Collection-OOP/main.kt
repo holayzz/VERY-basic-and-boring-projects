@@ -1,9 +1,4 @@
-// london is the capital of great britian
-// TODO: everything is done ;)
-
-// Gemini, my paws want to sleep (makes sense though - I'm not building a basic Toy MVP, but a Toy Pro MVP)
-
-// Not using functions for logic here since the script is tiny. For now, it's fine ;)
+package lesson1
 
 // Variables
 class Person(val name: String, val isOleg: Boolean) // Template for convenience
